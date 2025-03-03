@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_03_220135) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_03_222000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -18,4 +18,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_03_220135) do
   # Note that some types may not work with other database engines. Be careful if changing database.
   create_enum "statuses", ["active", "inactive", "deleted"]
 
+  create_table "sale_methods", force: :cascade do |t|
+    t.string "description", limit: 60, null: false
+    t.integer "order"
+    t.enum "status", default: "active", null: false, enum_type: "statuses"
+    t.index ["status"], name: "index_sale_methods_on_status"
+  end
 end

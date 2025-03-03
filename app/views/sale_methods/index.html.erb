@@ -1,0 +1,36 @@
+<% content_for :title, "Sale methods" %>
+
+<div class="row">
+  <h1>Sale methods</h1>
+</div>
+
+<div class="row">
+  <div class="col-2">
+    <%= link_to "New sale method", new_sale_method_path, class: "btn btn-success" %>
+  </div>
+</div>
+
+<table id="sale_methods" class="table table-hover table-striped mt-3">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Description</th>
+      <th scope="col">Order</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sale_methods.each do |sale_method| %>
+      <tr>
+        <th scope="row"><%= sale_method.id %></th>
+        <td><%= sale_method.description %></td>
+        <td><%= sale_method.order %></td>
+        <td><%= sale_method.status %></td>
+        <td>
+          <%= link_to "Edit", edit_sale_method_path(sale_method), class: "btn btn-primary" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
