@@ -10,27 +10,47 @@
   </div>
 </div>
 
-<table id="sale_methods" class="table table-hover table-striped mt-3">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Description</th>
-      <th scope="col">Order</th>
-      <th scope="col">Status</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @sale_methods.each do |sale_method| %>
+<div class="row mt-3">
+  <%= search_form_for @q do |form| %>
+    <div class="row">
+      <div class="col-9">
+        <%= form.search_field :description_cont, placeholder: true, class: "form-control" %>
+      </div>
+
+      <div class="col-2">
+        <%= form.select :status_eq, SaleMethod.statuses, { include_blank: true }, { class: "form-select" } %>
+      </div>
+
+      <div class="col-1">
+        <%= form.submit class: "btn btn-info" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="row mt-3">
+  <table id="sale_methods" class="table table-hover table-striped">
+    <thead>
       <tr>
-        <th scope="row"><%= sale_method.id %></th>
-        <td><%= sale_method.description %></td>
-        <td><%= sale_method.order %></td>
-        <td><%= sale_method.status %></td>
-        <td>
-          <%= link_to "Edit", edit_sale_method_path(sale_method), class: "btn btn-primary" %>
-        </td>
+        <th scope="col"><%= sort_link(@q, :id) %></th>
+        <th scope="col"><%= sort_link(@q, :description) %></th>
+        <th scope="col"><%= sort_link(@q, :order) %></th>
+        <th scope="col"><%= sort_link(@q, :status) %></th>
+        <th scope="col">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @sale_methods.each do |sale_method| %>
+        <tr>
+          <th scope="row"><%= sale_method.id %></th>
+          <td><%= highlight(sale_method.description, params.dig(:q, :description_cont)) %></td>
+          <td><%= sale_method.order %></td>
+          <td><%= sale_method.status %></td>
+          <td>
+            <%= link_to "Edit", edit_sale_method_path(sale_method), class: "btn btn-primary" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

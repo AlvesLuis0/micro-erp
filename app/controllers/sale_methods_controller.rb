@@ -3,7 +3,8 @@ class SaleMethodsController < ApplicationController
 
   # GET /sale_methods or /sale_methods.json
   def index
-    @sale_methods = SaleMethod.not_deleted
+    @q = SaleMethod.not_deleted.ransack(params[:q])
+    @sale_methods = @q.result
   end
 
   # GET /sale_methods/new
