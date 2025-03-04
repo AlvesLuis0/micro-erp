@@ -1,6 +1,8 @@
 <div class="d-flex gap-1 align-items-center mt-1">
   <%= link_to "Cancel", records_path(record), class: "btn btn-secondary" %>
   <% unless record.new_record? %>
-    <%= button_to "Delete", delete_record_path(record), class: "btn btn-danger", method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+    <%= button_to delete_record_path(record), class: "btn btn-danger", method: :delete, data: { turbo_confirm: "Are you sure?" } do %>
+      <i class="bi bi-trash"></i>
+    <% end %>
   <% end %>
 </div>
