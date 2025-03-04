@@ -3,8 +3,8 @@ class SaleMethodsController < ApplicationController
 
   # GET /sale_methods or /sale_methods.json
   def index
-    @q= SaleMethod.not_deleted.ransack(params[:q])
-    @records = @q.result
+    @q = SaleMethod.not_deleted.ransack(params[:q])
+    @pagy, @records = pagy(@q.result)
     render "layouts/index"
   end
 
