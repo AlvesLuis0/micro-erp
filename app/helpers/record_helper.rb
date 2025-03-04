@@ -15,11 +15,15 @@ module RecordHelper
     end
   end
 
+  def record_path(record)
+    "#{records_path}/#{record.id}"
+  end
+
   def new_record_path(record = nil)
     "#{records_path(record)}/new"
   end
 
-  def delete_record_path(record)
-    "#{records_path(record)}/#{record.id}"
+  def edit_record_path(record)
+    "#{record_path(record)}/edit"
   end
 end
