@@ -1,0 +1,5 @@
+pt:
+  attributes:
+    id: ID
+    description: Descrição
+    order: Ordem

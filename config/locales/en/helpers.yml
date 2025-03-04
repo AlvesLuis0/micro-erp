@@ -3,3 +3,4 @@ en:
     submit:
       create: Save
       update: Save
+      cancel: Cancel

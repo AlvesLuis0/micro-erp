@@ -2,11 +2,11 @@
   <div class="col-3">
     <div class="card">
       <div class="card-header">
-        Principal
+        <%= t("modules.principal") %>
       </div>
       <div class="card-body">
         <ul class="m-0">
-          <li><%= link_to("Sale methods", sale_methods_path, class: "card-text") %></li>
+          <li><%= link_to(t("routines.sale_methods"), sale_methods_path, class: "card-text") %></li>
         </ul>
       </div>
     </div>

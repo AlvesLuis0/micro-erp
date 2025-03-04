@@ -1,0 +1,5 @@
+pt:
+  enums:
+    active: Ativo
+    inactive: Inativo
+    deleted: Excluído

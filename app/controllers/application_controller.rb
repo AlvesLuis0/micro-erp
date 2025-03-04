@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   def create
     @record = model.new(record_params)
     if @record.save
-      redirect_to edit_record_path(@record), notice: "Record was successfully created."
+      redirect_to edit_record_path(@record), notice: t("flash.saved")
     else
       render "layouts/form", status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 
   def update
     if @record.update(record_params)
-      redirect_to edit_record_path(@record), notice: "Record was successfully updated."
+      redirect_to edit_record_path(@record), notice: t("flash.saved")
     else
       render "layouts/form", status: :unprocessable_entity
     end
@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
     else
       @record.destroy!
     end
-    redirect_to records_path, status: :see_other, notice: "Record was successfully deleted."
+    redirect_to records_path, status: :see_other, notice: t("flash.deleted")
   end
 
   protected
