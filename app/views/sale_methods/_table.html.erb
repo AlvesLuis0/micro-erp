@@ -16,7 +16,9 @@
         <td><%= record.order %></td>
         <td><%= record.status %></td>
         <td>
-          <%= link_to "Edit", edit_sale_method_path(record), class: "btn btn-primary" %>
+          <%= link_to edit_sale_method_path(record), class: "btn btn-primary" do %>
+            <i class="bi bi-pencil-square"></i>
+          <% end %>
         </td>
       </tr>
     <% end %>
