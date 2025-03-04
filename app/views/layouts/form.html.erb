@@ -1,0 +1,11 @@
+<% content_for(:title, record_title(@record)) %>
+
+<h1 class="text-uppercase fs-5 fw-bold">
+  <%= record_title(@record) %>
+</h1>
+
+<hr>
+
+<%= render("form", record: @record) %>
+
+<%= render("components/actions", record: @record) %>

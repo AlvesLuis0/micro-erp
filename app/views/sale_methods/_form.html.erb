@@ -1,8 +1,4 @@
-<% content_for :title, "Sale method" %>
-
-<h1>Sale method</h1>
-
-<%= simple_form_for(@sale_method) do |form| %>
+<%= simple_form_for(record) do |form| %>
   <div class="row">
     <div class="col-2">
       <%= form.input :id, disabled: true %>
@@ -25,12 +21,3 @@
     <%= form.button :submit %>
   </div>
 <% end %>
-
-<br>
-
-<div>
-  <%= link_to "Back to sale methods", sale_methods_path %>
-  <% unless @sale_method.new_record? %>
-    <%= button_to "Delete this sale method", sale_method_path(@sale_method), class: "btn btn-danger mt-2", method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-  <% end %>
-</div>
