@@ -2,3 +2,4 @@ pt:
   flash:
     saved: Registro salvo com sucesso.
     deleted: Registro excluído com sucesso.
+    confirm: Tem certeza?
