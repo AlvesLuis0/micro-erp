@@ -23,7 +23,10 @@
   </head>
 
   <body class="bg-body-tertiary">
-    <%= render("components/navbar") %>
+    <header>
+      <%= render("components/navbar") %>
+    </header>
+
     <main class="container mt-3 bg-white rounded p-3">
       <%= render("components/messages") %>
       <%= yield %>
