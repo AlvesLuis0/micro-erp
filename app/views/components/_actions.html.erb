@@ -1,4 +1,4 @@
-<div class="d-flex gap-3 align-items-center mt-1">
+<div class="d-flex gap-1 align-items-center mt-1">
   <% unless record.new_record? %>
     <%= button_to "Delete", delete_record_path(record), class: "btn btn-danger", method: :delete, data: { turbo_confirm: "Are you sure?" } %>
   <% end %>
