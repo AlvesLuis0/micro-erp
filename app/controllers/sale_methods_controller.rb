@@ -9,44 +9,44 @@ class SaleMethodsController < ApplicationController
 
   # GET /sale_methods/new
   def new
-    @sale_method = SaleMethod.new
-    render :form
+    @record = SaleMethod.new
+    render "layouts/form"
   end
 
   # GET /sale_methods/1/edit
   def edit
-    render :form
+    render "layouts/form"
   end
 
   # POST /sale_methods or /sale_methods.json
   def create
-    @sale_method = SaleMethod.new(sale_method_params)
-    if @sale_method.save
-      redirect_to edit_sale_method_path(@sale_method), notice: "Sale method was successfully created."
+    @record = SaleMethod.new(sale_method_params)
+    if @record.save
+      redirect_to edit_sale_method_path(@record), notice: "Sale method was successfully created."
     else
-      render :form, status: :unprocessable_entity
+      render "layouts/form", status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /sale_methods/1 or /sale_methods/1.json
   def update
-    if @sale_method.update(sale_method_params)
-      redirect_to edit_sale_method_path(@sale_method), notice: "Sale method was successfully updated."
+    if @record.update(sale_method_params)
+      redirect_to edit_sale_method_path(@record), notice: "Sale method was successfully updated."
     else
-      render :form, status: :unprocessable_entity
+      render "layouts/form", status: :unprocessable_entity
     end
   end
 
   # DELETE /sale_methods/1 or /sale_methods/1.json
   def destroy
-    @sale_method.deleted!
+    @record.deleted!
     redirect_to sale_methods_path, status: :see_other, notice: "Sale method was successfully destroyed."
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sale_method
-      @sale_method = SaleMethod.find(params.expect(:id))
+      @record = SaleMethod.find(params.expect(:id))
     end
 
     # Only allow a list of trusted parameters through.
