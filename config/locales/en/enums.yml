@@ -1,0 +1,5 @@
+en:
+  enums:
+    active: Active
+    inactive: Inactive
+    deleted: Deleted

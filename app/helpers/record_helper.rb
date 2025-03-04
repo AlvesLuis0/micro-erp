@@ -1,9 +1,9 @@
 module RecordHelper
   def record_title(record = nil)
     if record.nil?
-      params[:controller].gsub("_", " ").capitalize
+      t("routines.#{params[:controller]}")
     else
-      record.class.model_name.human
+      t("routines.#{record.class.model_name.route_key}")
     end
   end
 
