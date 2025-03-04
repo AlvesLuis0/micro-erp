@@ -1,0 +1,15 @@
+<% content_for(:title, record_title) %>
+
+<h1 class="text-uppercase fs-5 fw-bold">
+  <%= record_title %>
+</h1>
+
+<hr>
+
+<%= link_to("New", new_record_path, class: "btn btn-success mb-3") %>
+
+<%= render("search", records: @records, q: @q) %>
+
+<%= render("table", records: @records, q: @q) %>
+
+<%# pagination %>
