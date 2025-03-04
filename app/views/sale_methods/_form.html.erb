@@ -1,23 +1,23 @@
-<%= simple_form_for(record) do |form| %>
+<%= simple_form_for(record) do |f| %>
   <div class="row">
     <div class="col-2">
-      <%= form.input :id, disabled: true %>
+      <%= f.input :id, disabled: true %>
     </div>
 
     <div class="col-6">
-      <%= form.input :description, autofocus: true %>
+      <%= f.input :description, autofocus: true %>
     </div>
 
     <div class="col-2">
-      <%= form.input :order %>
+      <%= f.input :order %>
     </div>
 
     <div class="col-2">
-      <%= form.input :status, collection: SaleMethod.statuses, include_blank: false %>
+      <%= f.input :status, collection: SaleMethod.statuses, include_blank: false %>
     </div>
   </div>
 
   <div>
-    <%= form.button :submit %>
+    <%= f.button :submit %>
   </div>
 <% end %>
