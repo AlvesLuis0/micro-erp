@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get "modules/administrator"
 
   resources :sale_methods
+  resources :payment_methods
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

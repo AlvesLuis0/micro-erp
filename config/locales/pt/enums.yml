@@ -3,3 +3,11 @@ pt:
     active: Ativo
     inactive: Inativo
     deleted: Excluído
+
+    cash: Dinheiro
+    credit_card: Cartão de crédito
+    debit_card: Cartão de débito
+    bank_transfer: Transferência bancária
+    installment: Crediário/Carnê
+    eletronic_wallet: Carteira digital
+    other: Outros

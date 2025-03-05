@@ -2,8 +2,23 @@
   <div class="col-3">
     <div class="card">
       <div class="card-header">
-        <%= t("modules.principal") %>
+        <%= t("modules.parameters_financial") %>
       </div>
+
+      <div class="card-body">
+        <ul class="m-0">
+          <li><%= link_to(t("routines.payment_methods"), payment_methods_path, class: "card-text") %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="card">
+      <div class="card-header">
+        <%= t("modules.parameters_purchases_sales") %>
+      </div>
+
       <div class="card-body">
         <ul class="m-0">
           <li><%= link_to(t("routines.sale_methods"), sale_methods_path, class: "card-text") %></li>
