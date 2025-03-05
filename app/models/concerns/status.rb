@@ -8,6 +8,7 @@ module Status
         inactive: "inactive",
         deleted: "deleted"
       },
+      prefix: true,
       validate: true,
       default: :active
   end
