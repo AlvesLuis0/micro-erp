@@ -1,17 +1,6 @@
 class PaymentMethod < ApplicationRecord
   include Status
-
-  enum :payment_type,
-    {
-      cash: "cash",
-      credit_card: "credit_card",
-      debit_card: "debit_card",
-      bank_transfer: "bank_transfer",
-      installment: "installment",
-      eletronic_wallet: "eletronic_wallet",
-      other: "other"
-    },
-    validate: true
+  include PaymentType
 
   validates :description, presence: true, length: { maximum: 60 }
 

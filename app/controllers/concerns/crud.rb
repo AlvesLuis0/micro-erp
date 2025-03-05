@@ -8,7 +8,7 @@ module Crud
     before_action :set_record, only: %i[ edit update destroy ]
 
     def index
-      @q = model.not_deleted.ransack(params[:q])
+      @q = model.not_status_deleted.ransack(params[:q])
       @pagy, @records = pagy(@q.result)
       render "layouts/index"
     end
@@ -40,14 +40,14 @@ module Crud
     end
 
     def destroy
-      @record.deleted!
+      @record.status_deleted!
       redirect_to records_path, status: :see_other, notice: t("flash.deleted")
     end
 
     protected
 
     def set_record
-      @record = model.not_deleted.find(params.expect(:id))
+      @record = model.not_status_deleted.find(params.expect(:id))
     end
 
     def record_params
