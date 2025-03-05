@@ -1,4 +1,6 @@
 class SaleMethodsController < ApplicationController
+  include Crud
+
   protected
 
   def record_params
