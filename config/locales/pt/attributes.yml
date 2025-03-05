@@ -3,3 +3,5 @@ pt:
     id: ID
     description: Descrição
     order: Ordem
+
+    payment_type: Forma de pagamento

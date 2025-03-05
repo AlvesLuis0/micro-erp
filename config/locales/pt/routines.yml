@@ -1,3 +1,4 @@
 pt:
   routines:
     sale_methods: Formas de venda
+    payment_methods: Formas de pagamento

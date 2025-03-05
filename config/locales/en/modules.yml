@@ -2,4 +2,5 @@ en:
   modules:
     administrator: Administrator
 
-    principal: Principal
+    parameters_purchases_sales: Parameters - Purchases and sales
+    parameters_financial: Parameters - Financial
