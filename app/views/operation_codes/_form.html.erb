@@ -1,0 +1,53 @@
+<%= simple_form_for(record) do |form| %>
+  <div class="row">
+    <div class="col-2">
+      <%= form.input :id, disabled: true %>
+    </div>
+
+    <div class="col-8">
+      <%= form.input :description, autofocus: true %>
+    </div>
+
+    <div class="col-2">
+      <%= form.input :status, collection: enum_to_select(OperationCode.statuses), include_blank: false %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <%= form.input :operation_type, collection: enum_to_select(OperationCode.operation_types), include_blank: false %>
+    </div>
+
+    <div class="col-2">
+      <%= form.input :entry_exit, collection: enum_to_select(OperationCode.entry_exits), include_blank: false %>
+    </div>
+
+    <div class="col-2">
+      <%= form.input :updates_stock, as: :select, include_blank: false %>
+    </div>
+  </div>
+
+  <div class="row gap-2 mb-2">
+    <fieldset class="col-3 border rounded">
+      <legend class="float-none w-auto"><%= t("simple_form.labels.operation_code.input_quantity") %></legend>
+      <div class="d-flex gap-5">
+        <%= form.input :input_quantity_on_create %>
+        <%= form.input :input_quantity_on_update %>
+      </div>
+    </fieldset>
+
+    <fieldset class="col-3 border rounded">
+      <legend class="float-none w-auto"><%= t("simple_form.labels.operation_code.input_price") %></legend>
+      <div class="d-flex gap-5">
+        <%= form.input :input_price_on_create %>
+        <%= form.input :input_price_on_update %>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      <%= form.button :submit %>
+    </div>
+  </div>
+<% end %>

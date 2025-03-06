@@ -1,3 +1,5 @@
 en:
   attributes:
     id: ID
+
+    entry_exit: Entry/Exit
