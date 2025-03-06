@@ -5,3 +5,7 @@ pt:
     order: Ordem
 
     payment_type: Forma de pagamento
+
+    operation_type: Tipo de operação
+    entry_exit: Entrada/Saída
+    updates_stock: Atualiza estoque

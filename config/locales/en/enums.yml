@@ -11,3 +11,12 @@ en:
     installment: Installment
     eletronic_wallet: Eletronic wallet
     other: Other
+
+    purchase: Purchase
+    sale: Sale
+    consignment: Consignment
+    exchange: Exchange
+    transfer: Transfer
+
+    entry: Entry
+    exit: Exit

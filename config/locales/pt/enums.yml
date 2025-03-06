@@ -11,3 +11,12 @@ pt:
     installment: Crediário/Carnê
     eletronic_wallet: Carteira digital
     other: Outros
+
+    purchase: Compra
+    sale: Venda
+    consignment: Consignação
+    exchange: Troca
+    transfer: Transferência
+
+    entry: Entrada
+    exit: Saída
