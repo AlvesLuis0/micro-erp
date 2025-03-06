@@ -1,25 +1,25 @@
-<%= simple_form_for(record) do |f| %>
+<%= simple_form_for(record) do |form| %>
   <div class="row">
     <div class="col-2">
-      <%= f.input :id, disabled: true %>
+      <%= form.input :id, disabled: true %>
     </div>
 
     <div class="col-6">
-      <%= f.input :description, autofocus: true %>
+      <%= form.input :description, autofocus: true %>
     </div>
 
     <div class="col-2">
-      <%= f.input :order %>
+      <%= form.input :order %>
     </div>
 
     <div class="col-2">
-      <%= f.input :status, collection: enum_to_select(SaleMethod.statuses), include_blank: false %>
+      <%= form.input :status, collection: enum_to_select(SaleMethod.statuses), include_blank: false %>
     </div>
   </div>
 
   <div class="row">
     <div class="col-1">
-      <%= f.button :submit %>
+      <%= form.button :submit %>
     </div>
   </div>
 <% end %>
