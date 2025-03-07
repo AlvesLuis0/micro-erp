@@ -1,9 +1,9 @@
 class SaleMethodsController < ApplicationController
-  include Crud
+  include Crud::Backend
 
   protected
 
-  def record_params
+  def resource_params
     params.expect(sale_method: [ :description, :order, :status ])
   end
 

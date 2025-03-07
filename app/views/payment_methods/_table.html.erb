@@ -8,13 +8,13 @@
     </tr>
   </thead>
   <tbody>
-    <% records.each do |record| %>
+    <% resources.each do |resource| %>
       <tr>
-        <th><%= record.id %></th>
-        <td><%= highlight(record.description, params.dig(:q, :description_cont)) %></td>
-        <td><%= t_enum(record.payment_type) %></td>
-        <td><%= t_enum(record.status) %></td>
-        <td><%= link_to t("helpers.submit.edit"), edit_payment_method_path(record), class: "btn btn-primary" %></td>
+        <th><%= resource.id %></th>
+        <td><%= highlight(resource.description, params.dig(:q, :description_cont)) %></td>
+        <td><%= t_enum(resource.payment_type) %></td>
+        <td><%= t_enum(resource.status) %></td>
+        <td><%= link_to t("helpers.submit.edit"), edit_payment_method_path(resource), class: "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>

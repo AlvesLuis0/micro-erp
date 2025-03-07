@@ -3,9 +3,9 @@
     <%= form.button :submit, data: { turbo_method: :delete, turbo_confirm: t("flash.confirm") } %>
   </div>
 
-  <%= link_to t("helpers.submit.cancel"), records_path, class: "btn btn-warning", data: { turbo_method: :get, turbo_confirm: t("flash.confirm") } %>
+  <%= link_to t("helpers.submit.cancel"), resources_path, class: "btn btn-warning", data: { turbo_method: :get, turbo_confirm: t("flash.confirm") } %>
 
   <% unless form.object.new_record? %>
-    <%= link_to t("helpers.submit.delete"), record_path(form.object), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: t("flash.confirm") } %>
+    <%= link_to t("helpers.submit.delete"), resource_path(form.object), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: t("flash.confirm") } %>
   <% end %>
 </div>
