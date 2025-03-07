@@ -1,6 +1,9 @@
 en:
   helpers:
     submit:
+      new: New
       create: Save
+      edit: Edit
       update: Save
       cancel: Cancel
+      delete: Delete

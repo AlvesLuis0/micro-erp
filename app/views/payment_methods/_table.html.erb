@@ -14,11 +14,7 @@
         <td><%= highlight(record.description, params.dig(:q, :description_cont)) %></td>
         <td><%= t_enum(record.payment_type) %></td>
         <td><%= t_enum(record.status) %></td>
-        <td>
-          <%= link_to edit_payment_method_path(record), class: "btn btn-primary" do %>
-            <i class="bi bi-pencil-square"></i>
-          <% end %>
-        </td>
+        <td><%= link_to t("helpers.submit.edit"), edit_payment_method_path(record), class: "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>

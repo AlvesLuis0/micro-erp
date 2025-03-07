@@ -17,9 +17,5 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-1">
-      <%= form.button :submit %>
-    </div>
-  </div>
+  <%= render("components/actions", form: form) %>
 <% end %>
