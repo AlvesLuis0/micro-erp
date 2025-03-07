@@ -1,6 +1,9 @@
 pt:
   helpers:
     submit:
+      new: Novo
       create: Salvar
+      edit: Editar
       update: Salvar
       cancel: Cancelar
+      delete: Excluir
