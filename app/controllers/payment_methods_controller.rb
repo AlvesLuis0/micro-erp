@@ -1,9 +1,9 @@
 class PaymentMethodsController < ApplicationController
-  include Crud
+  include Crud::Backend
 
   protected
 
-  def record_params
+  def resource_params
     params.expect(payment_method: [ :description, :payment_type, :status ])
   end
 

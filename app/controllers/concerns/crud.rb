@@ -1,61 +1,63 @@
 module Crud
-  extend ActiveSupport::Concern
+  module Backend
+    extend ActiveSupport::Concern
 
-  include Pagy::Backend
-  include RecordHelper
+    include Pagy::Backend
+    include ResourceHelper
 
-  included do
-    before_action :set_record, only: %i[ edit update destroy ]
+    included do
+      before_action :set_resource, only: %i[ edit update destroy ]
 
-    def index
-      @q = model.not_status_deleted.ransack(params[:q])
-      @pagy, @records = pagy(@q.result)
-      render "layouts/index"
-    end
-
-    def new
-      @record = model.new
-      render "layouts/form"
-    end
-
-    def edit
-      render "layouts/form"
-    end
-
-    def create
-      @record = model.new(record_params)
-      if @record.save
-        redirect_to edit_record_path(@record), notice: t("flash.saved")
-      else
-        render "layouts/form", status: :unprocessable_entity
+      def index
+        @q = model.not_status_deleted.ransack(params[:q])
+        @pagy, @resources = pagy(@q.result)
+        render "layouts/index"
       end
-    end
 
-    def update
-      if @record.update(record_params)
-        redirect_to edit_record_path(@record), notice: t("flash.saved")
-      else
-        render "layouts/form", status: :unprocessable_entity
+      def new
+        @resource = model.new
+        render "layouts/form"
       end
-    end
 
-    def destroy
-      @record.status_deleted!
-      redirect_to records_path, status: :see_other, notice: t("flash.deleted")
-    end
+      def edit
+        render "layouts/form"
+      end
 
-    protected
+      def create
+        @resource = model.new(resource_params)
+        if @resource.save
+          redirect_to edit_resource_path(@resource), notice: t("flash.saved")
+        else
+          render "layouts/form", status: :unprocessable_entity
+        end
+      end
 
-    def set_record
-      @record = model.not_status_deleted.find(params.expect(:id))
-    end
+      def update
+        if @resource.update(resource_params)
+          redirect_to edit_resource_path(@resource), notice: t("flash.saved")
+        else
+          render "layouts/form", status: :unprocessable_entity
+        end
+      end
 
-    def record_params
-      raise "record_params not specified"
-    end
+      def destroy
+        @resource.status_deleted!
+        redirect_to resources_path, status: :see_other, notice: t("flash.deleted")
+      end
 
-    def model
-      raise "model not specified"
+      protected
+
+      def set_resource
+        @resource = model.not_status_deleted.find(params.expect(:id))
+      end
+
+      def resource_params
+        raise "resource_params not specified"
+      end
+
+      def model
+        raise "model not specified"
+      end
     end
   end
 end

@@ -1,7 +1,7 @@
 class OperationCode < ApplicationRecord
-  include Status
-  include OperationType
-  include EntryExit
+  include Status::Enum
+  include OperationType::Enum
+  include EntryExit::Enum
 
   attribute :input_quantity_on_update, :boolean, default: true
   attribute :input_price_on_update, :boolean, default: true

@@ -1,5 +1,5 @@
 en:
   flash:
-    saved: Record was successfully saved.
-    deleted: Record was successfully deleted.
+    saved: Resource was successfully saved.
+    deleted: Resource was successfully deleted.
     confirm: Are you sure?

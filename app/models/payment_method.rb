@@ -1,6 +1,6 @@
 class PaymentMethod < ApplicationRecord
-  include Status
-  include PaymentType
+  include Status::Enum
+  include PaymentType::Enum
 
   validates :description, presence: true, length: { maximum: 60 }
 

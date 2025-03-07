@@ -4,8 +4,4 @@ module EnumHelper
       [ t_enum(key), value ]
     end
   end
-
-  def t_enum(enum)
-    t("enums.#{enum}")
-  end
 end

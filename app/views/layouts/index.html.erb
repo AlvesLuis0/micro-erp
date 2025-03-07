@@ -1,15 +1,15 @@
-<% content_for(:title, record_title) %>
+<% content_for(:title, resource_title) %>
 
 <div class="d-flex justify-content-between align-items-center">
-  <h1 class="text-uppercase fs-5 fw-bold m-0"><%= record_title %></h1>
+  <h1 class="text-uppercase fs-5 fw-bold m-0"><%= resource_title %></h1>
 
-  <%= link_to(t("helpers.submit.new"), new_record_path, class: "btn btn-success") %>
+  <%= t_link_to("helpers.submit.new", new_resource_path, class: "btn btn-success") %>
 </div>
 
 <hr>
 
-<%= render("search", records: @records, q: @q) %>
+<%= render("search", resources: @resources, q: @q) %>
 
-<%= render("table", records: @records, q: @q) %>
+<%= render("table", resources: @resources, q: @q) %>
 
 <%== pagy_bootstrap_nav(@pagy) %>

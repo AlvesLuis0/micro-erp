@@ -1,7 +1,7 @@
-<% content_for(:title, record_title) %>
+<% content_for(:title, resource_title) %>
 
-<h1 class="text-uppercase fs-5 fw-bold m-0"><%= record_title %></h1>
+<h1 class="text-uppercase fs-5 fw-bold m-0"><%= resource_title %></h1>
 
 <hr>
 
-<%= render("form", record: @record) %>
+<%= render("form", resource: @resource) %>
