@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_05_194052) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_12_111249) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -20,6 +20,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_194052) do
   create_enum "operation_types", ["purchase", "sale", "consignment", "exchange", "transfer", "other"]
   create_enum "payment_types", ["cash", "credit_card", "debit_card", "bank_transfer", "installment", "eletronic_wallet", "other"]
   create_enum "statuses", ["active", "inactive", "deleted"]
+
+  create_table "cities", force: :cascade do |t|
+    t.string "description", limit: 60, null: false
+    t.bigint "state_id", null: false
+    t.index ["state_id"], name: "index_cities_on_state_id"
+  end
 
   create_table "operation_codes", force: :cascade do |t|
     t.string "description", limit: 60, null: false
@@ -50,4 +56,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_194052) do
     t.enum "status", default: "active", null: false, enum_type: "statuses"
     t.index ["status"], name: "index_sale_methods_on_status"
   end
+
+  create_table "states", force: :cascade do |t|
+    t.string "description", limit: 60, null: false
+    t.string "uf", limit: 2, null: false
+  end
+
+  add_foreign_key "cities", "states"
 end

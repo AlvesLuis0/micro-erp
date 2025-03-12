@@ -1,9 +1,19 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+def load_json(table_name)
+  path = Rails.root.join("db/seed/#{table_name}.json")
+  JSON.load_file!(path)
+end
+
+def seed(model)
+  table_name = model.table_name
+  rows = load_json(model.table_name)
+  puts("Loaded file #{table_name}.json")
+  ids = rows.map { |row| row["id"] }
+  registered_rows = model.where('id = ANY(ARRAY[?]::bigint[])', ids).pluck(:id)
+  ids = ids.difference(registered_rows)
+  rows = rows.filter { |row| ids.include?(row["id"]) }
+  puts("Filtered resources #{table_name}")
+  model.insert_all!(rows)
+end
+
+seed(State)
+seed(City)
