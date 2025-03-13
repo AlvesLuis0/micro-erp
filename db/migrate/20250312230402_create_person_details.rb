@@ -2,7 +2,7 @@ class CreatePersonDetails < ActiveRecord::Migration[8.0]
   def change
     create_table :person_details do |t|
       t.string :name, limit: 100, null: false
-      t.enum :person_type, enum_type: :person_types, index: true, null: true
+      t.enum :person_type, enum_type: :person_types, index: true, null: false
 
       t.string :cpf, limit: 11
       t.string :rg, limit: 15
