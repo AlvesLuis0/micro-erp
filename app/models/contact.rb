@@ -3,11 +3,11 @@ class Contact < ApplicationRecord
 
   belongs_to :person_detail
 
-  validates :email, length: { maximum: 100 }, if: :contact_type_email?
+  validates :email, length: { maximum: 100 }, if: -> { contact_type_email? && email? }
 
   with_options if: :contact_type_mobile? do |mobile|
-    mobile.validates :area_code, numericality: { only_integer: true }, length: { is: 2 }
-    mobile.validates :mobile_number, numericality: { only_integer: true }, length: { is: 9 }
+    mobile.validates :area_code, numericality: { only_integer: true }, length: { is: 2 }, if: :mobile_number?
+    mobile.validates :mobile_number, numericality: { only_integer: true }, length: { is: 9 }, if: :area_code?
   end
 
   before_validation :clear_attributes
