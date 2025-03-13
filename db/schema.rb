@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_12_111249) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_12_230402) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
   create_enum "entry_exit", ["entry", "exit"]
+  create_enum "marital_statuses", ["single", "married", "divorced", "widowed"]
   create_enum "operation_types", ["purchase", "sale", "consignment", "exchange", "transfer", "other"]
   create_enum "payment_types", ["cash", "credit_card", "debit_card", "bank_transfer", "installment", "eletronic_wallet", "other"]
+  create_enum "person_types", ["individual", "company"]
   create_enum "statuses", ["active", "inactive", "deleted"]
 
   create_table "cities", force: :cascade do |t|
@@ -48,6 +50,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_12_111249) do
     t.enum "status", default: "active", null: false, enum_type: "statuses"
     t.index ["payment_type"], name: "index_payment_methods_on_payment_type"
     t.index ["status"], name: "index_payment_methods_on_status"
+  end
+
+  create_table "person_details", force: :cascade do |t|
+    t.string "name", limit: 100, null: false
+    t.enum "person_type", enum_type: "person_types"
+    t.string "cpf", limit: 11
+    t.string "rg", limit: 15
+    t.string "issuing_agency", limit: 20
+    t.date "birth_date"
+    t.enum "marital_status", enum_type: "marital_statuses"
+    t.string "cnpj", limit: 14
+    t.string "state_registration", limit: 20
+    t.string "trade_name", limit: 60
+    t.index ["cnpj"], name: "index_person_details_on_cnpj", unique: true, where: "(cnpj IS NOT NULL)"
+    t.index ["cpf"], name: "index_person_details_on_cpf", unique: true, where: "(cpf IS NOT NULL)"
+    t.index ["marital_status"], name: "index_person_details_on_marital_status"
+    t.index ["person_type"], name: "index_person_details_on_person_type"
+    t.index ["rg"], name: "index_person_details_on_rg", unique: true, where: "(rg IS NOT NULL)"
   end
 
   create_table "sale_methods", force: :cascade do |t|
