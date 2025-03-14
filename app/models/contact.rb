@@ -6,8 +6,8 @@ class Contact < ApplicationRecord
   validates :email, length: { maximum: 100 }, if: -> { contact_type_email? && email? }
 
   with_options if: :contact_type_mobile? do |mobile|
-    mobile.validates :area_code, numericality: { only_integer: true }, length: { is: 2 }, if: :mobile_number?
-    mobile.validates :mobile_number, numericality: { only_integer: true }, length: { is: 9 }, if: :area_code?
+    mobile.validates :area_code, numericality: { only_integer: true }, length: { is: 2 }, if: :area_code
+    mobile.validates :mobile_number, numericality: { only_integer: true }, length: { is: 9 }, if: :mobile_number
   end
 
   before_validation :clear_attributes
