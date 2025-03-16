@@ -1,0 +1,129 @@
+<%= simple_form_for(resource, data: { controller: "person-details" }) do |form| %>
+  <div class="row">
+    <div class="col-2">
+      <%= form.input :id, disabled: true %>
+    </div>
+
+    <%= form.simple_fields_for(:person_detail) do |form| %>
+      <div class="col-4">
+        <%= form.input :name %>
+      </div>
+
+      <div class="col-2">
+        <%= form.input :person_type, collection: enum_to_select(PersonDetail.person_types), include_blank: false, input_html: { data: { person_details_target: "personType", action: "person-details#onChangePersonType" } } %>
+      </div>
+    <% end %>
+
+    <div class="col-2">
+      <%= form.input :created_at, as: :date, html5: true, disabled: true %>
+    </div>
+
+    <div class="col-2">
+      <%= form.input :status, collection: enum_to_select(Customer.statuses), include_blank: false %>
+    </div>
+  </div>
+
+  <div class="row" data-person-details-target="individualForm">
+    <%= form.simple_fields_for(:person_detail) do |form| %>
+      <div class="col-3">
+        <%= form.input :cpf, as: :integer %>
+      </div>
+
+      <div class="col-3">
+        <%= form.input :rg, as: :integer %>
+      </div>
+
+      <div class="col-2">
+        <%= form.input :issuing_agency %>
+      </div>
+
+      <div class="col-2">
+        <%= form.input :birth_date, as: :date, html5: true %>
+      </div>
+
+      <div class="col-2">
+        <%= form.input :marital_status, collection: enum_to_select(PersonDetail.marital_statuses), include_blank: true %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row" data-person-details-target="companyForm">
+    <%= form.simple_fields_for(:person_detail) do |form| %>
+      <div class="row">
+        <div class="col-3">
+          <%= form.input :cnpj, as: :integer %>
+        </div>
+
+        <div class="col-3">
+          <%= form.input :state_registration %>
+        </div>
+
+        <div class="col-6">
+          <%= form.input :trade_name %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <%= form.simple_fields_for(:person_detail) do |form| %>
+      <%= form.simple_fields_for(:address) do |form| %>
+        <div class="row">
+          <div class="col-6">
+            <%= form.input :street %>
+          </div>
+
+          <div class="col-3">
+            <%= form.input :number %>
+          </div>
+
+          <div class="col-3">
+            <%= form.input :complement %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-2">
+            <%= form.input :zip_code, as: :integer %>
+          </div>
+
+          <div class="col-4">
+            <%= form.input :neighborhood %>
+          </div>
+
+          <div class="col-3">
+            <%= render("components/select-search",
+              form: form,
+              association: :city,
+              url: cities_path,
+              query_param: "q[description_cont]",
+              value: resource.person_detail.address.city&.description)
+            %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <%= form.simple_fields_for(:contacts) do |form| %>
+          <% if form.object.contact_type_email? %>
+            <div class="col-5">
+              <%= form.input :email, as: :email %>
+              <%= form.input :contact_type, as: :hidden %>
+            </div>
+          <% elsif form.object.contact_type_mobile? %>
+            <div class="col-2">
+              <%= form.input :mobile_number, as: :integer %>
+              <%= form.input :contact_type, as: :hidden %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <%= form.input :note, as: :text %>
+  </div>
+
+  <%= render("components/actions", form: form) %>
+<% end %>

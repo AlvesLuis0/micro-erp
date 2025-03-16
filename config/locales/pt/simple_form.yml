@@ -4,7 +4,8 @@ pt:
     "no": Não
 
     required:
-      html: <abbr title="obrigatório" class="text-danger">*</abbr>
+      text: obrigatório
+      mark: "*"
 
     error_notification:
       default_message: "Por favor, revise os problemas abaixo:"
@@ -12,7 +13,7 @@ pt:
     labels:
       operation_code:
         input_quantity: Digita quantidade
-        input_price: Digita preco
+        input_price: Digita preço
         input_quantity_on_create: Incluir
         input_quantity_on_update: Alterar
         input_price_on_create: Incluir

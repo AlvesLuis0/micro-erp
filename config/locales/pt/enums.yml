@@ -20,3 +20,11 @@ pt:
 
     entry: Entrada
     exit: Saída
+
+    individual: Física
+    company: Jurídica
+
+    single: Solteiro(a)
+    married: Casado(a)
+    divorced: Divorciado(a)
+    widowed: Viúvo(a)

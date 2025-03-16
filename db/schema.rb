@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_14_210232) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_14_220600) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -46,10 +46,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_14_210232) do
     t.bigint "person_detail_id", null: false
     t.enum "contact_type", null: false, enum_type: "contact_types"
     t.string "email", limit: 100
-    t.string "area_code", limit: 2
-    t.string "mobile_number", limit: 9
+    t.string "mobile_number", limit: 11
     t.index ["contact_type"], name: "index_contacts_on_contact_type"
     t.index ["person_detail_id"], name: "index_contacts_on_person_detail_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.bigint "person_detail_id", null: false
+    t.text "note"
+    t.enum "status", null: false, enum_type: "statuses"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_detail_id"], name: "index_customers_on_person_detail_id"
+    t.index ["status"], name: "index_customers_on_status"
   end
 
   create_table "operation_codes", force: :cascade do |t|
@@ -86,11 +95,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_14_210232) do
     t.string "cnpj", limit: 14
     t.string "state_registration", limit: 20
     t.string "trade_name", limit: 60
-    t.index ["cnpj"], name: "index_person_details_on_cnpj", unique: true, where: "(cnpj IS NOT NULL)"
-    t.index ["cpf"], name: "index_person_details_on_cpf", unique: true, where: "(cpf IS NOT NULL)"
+    t.index ["cnpj"], name: "index_person_details_on_cnpj"
+    t.index ["cpf"], name: "index_person_details_on_cpf"
     t.index ["marital_status"], name: "index_person_details_on_marital_status"
     t.index ["person_type"], name: "index_person_details_on_person_type"
-    t.index ["rg"], name: "index_person_details_on_rg", unique: true, where: "(rg IS NOT NULL)"
+    t.index ["rg"], name: "index_person_details_on_rg"
   end
 
   create_table "sale_methods", force: :cascade do |t|
@@ -109,4 +118,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_14_210232) do
   add_foreign_key "addresses", "person_details"
   add_foreign_key "cities", "states"
   add_foreign_key "contacts", "person_details"
+  add_foreign_key "customers", "person_details"
 end

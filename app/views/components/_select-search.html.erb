@@ -1,0 +1,20 @@
+<%= form.input association do %>
+  <div data-controller="autocomplete" data-autocomplete-url-value="<%= url %>" role="combobox" data-autocomplete-query-param-value="<%= query_param %>">
+    <input
+      type="text"
+      data-autocomplete-target="input"
+      class="form-control <%= form.object.errors.include?(association) ? "is-invalid" : "is-valid" %>"
+      value="<%= value %>"
+    />
+
+    <% if form.object.errors.include?(association) %>
+      <div class="invalid-feedback">
+        <%= form.object.errors.full_messages_for(association)[0] %>
+      </div>
+    <% end %>
+
+    <%= form.input_field "#{association}_id", as: :hidden, data: { autocomplete_target: "hidden" } %>
+
+    <ul class="list-group dropdown-menu" data-autocomplete-target="results" style="max-height: 12.5rem; overflow-y: scroll;"></ul>
+  </div>
+<% end %>

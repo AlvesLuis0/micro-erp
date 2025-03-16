@@ -4,7 +4,8 @@ en:
     "no": No
 
     required:
-      html: <abbr title="required" class="text-danger">*</abbr>
+      text: required
+      mark: "*"
 
     error_notification:
       default_message: "Please review the problems below:"

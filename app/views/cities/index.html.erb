@@ -1,0 +1,12 @@
+<% @states.each do |state| %>
+  <li class="dropdown-item-text fw-bold" role="option" aria-disabled="true">
+    <%= state[0][1] %>
+  </li>
+  <ul class="p-0">
+    <% state[1].each do |city| %>
+      <li class="dropdown-item" role="option" data-autocomplete-value="<%= city.id %>">
+        <%= city.description %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

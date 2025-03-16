@@ -20,3 +20,11 @@ en:
 
     entry: Entry
     exit: Exit
+
+    individual: Individual
+    company: Company
+
+    single: Single
+    married: Married
+    divorced: Divorced
+    widowed: Widowed

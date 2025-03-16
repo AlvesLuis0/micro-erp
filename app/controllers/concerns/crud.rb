@@ -15,7 +15,7 @@ module Crud
       end
 
       def new
-        @resource = model.new
+        @resource = instantiate_resource
         render "layouts/form"
       end
 
@@ -57,6 +57,10 @@ module Crud
 
       def model
         raise "model not specified"
+      end
+
+      def instantiate_resource
+        model.new
       end
     end
   end

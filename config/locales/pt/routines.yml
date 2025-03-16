@@ -3,3 +3,5 @@ pt:
     sale_methods: Formas de venda
     payment_methods: Formas de pagamento
     operation_codes: Códigos de operação
+
+    customers: Clientes

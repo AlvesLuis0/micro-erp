@@ -3,3 +3,10 @@ en:
     id: ID
 
     entry_exit: Entry/Exit
+
+    created_at: Registered at
+    note: Note
+
+    cpf: CPF
+    rg: RG
+    cnpj: CNPJ
