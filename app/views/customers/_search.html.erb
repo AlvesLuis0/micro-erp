@@ -1,0 +1,22 @@
+<%= search_form_for(q) do |form| %>
+  <div class="row">
+    <div class="col-7">
+      <%= form.label :name %>
+      <%= form.search_field :person_detail_name_cont, { class: "form-control" } %>
+    </div>
+
+    <div class="col-2">
+      <%= form.label :person_type %>
+      <%= form.select :person_detail_person_type_eq, enum_to_select(PersonDetail.person_types), { include_blank: true }, { class: "form-select" } %>
+    </div>
+
+    <div class="col-2">
+      <%= form.label :status %>
+      <%= form.select :status_eq, enum_to_select(Customer.statuses), { include_blank: true }, { class: "form-select" } %>
+    </div>
+
+    <div class="col-1 mt-auto">
+      <%= form.submit class: "btn btn-secondary" %>
+    </div>
+  </div>
+<% end %>

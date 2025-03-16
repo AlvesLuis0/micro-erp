@@ -4,4 +4,7 @@ class ModulesController < ApplicationController
 
   def administrator
   end
+
+  def sales
+  end
 end

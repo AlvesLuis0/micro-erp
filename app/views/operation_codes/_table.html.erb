@@ -14,7 +14,7 @@
         <td><%= highlight(resource.description, params.dig(:q, :description_cont)) %></td>
         <td><%= t_enum(resource.operation_type) %></td>
         <td><%= t_enum(resource.status) %></td>
-        <td><%= link_to t("helpers.submit.edit"), edit_operation_code_path(resource), class: "btn btn-primary" %></td>
+        <td><%= t_link_to "helpers.submit.edit", edit_operation_code_path(resource), class: "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>

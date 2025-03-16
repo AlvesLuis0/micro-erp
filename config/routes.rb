@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   get "modules/administrator"
+  get "modules/sales"
 
   resources :sale_methods
   resources :payment_methods
   resources :operation_codes
+  resources :cities
+  resources :customers
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

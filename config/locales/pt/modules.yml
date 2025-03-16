@@ -1,6 +1,8 @@
 pt:
   modules:
     administrator: Administrador
+    sales: Vendas
 
     parameters_purchases_sales: Parâmetros - Compras e vendas
     parameters_financial: Parameters - Financeiro
+    principal: Principal

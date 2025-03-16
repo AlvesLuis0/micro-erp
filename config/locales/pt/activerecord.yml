@@ -18,6 +18,7 @@ pt:
         odd: deve ser ímpar
         even: deve ser par
         record_invalid: "A validação falhou: %{errors}"
+        required: precisa existir
         restrict_dependent_destroy:
           has_one: Não pode ser excluído porque existe um %{record} associado
           has_many: Não pode ser excluído porque existem %{record} associados
