@@ -1,6 +1,12 @@
 class CustomersController < ApplicationController
   include Crud::Backend
 
+  def index
+    @q = Customer.includes(:person_detail).not_status_deleted.ransack(params[:q])
+    @pagy, @resources = pagy(@q.result)
+    render "layouts/index"
+  end
+
   protected
 
   def resource_params
