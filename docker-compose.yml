@@ -1,4 +1,14 @@
 services:
+  application:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_HOST: database
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+
   database:
     image: postgres:17
     environment:
