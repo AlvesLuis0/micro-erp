@@ -16,7 +16,7 @@ WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
-  apt-get install --no-install-recommends -y curl libjemalloc2 libvips postgresql-client && \
+  apt-get install --no-install-recommends -y curl libjemalloc2 libvips postgresql-client dos2unix && \
   rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment
@@ -54,6 +54,9 @@ RUN yarn install --frozen-lockfile
 
 # Copy application code
 COPY . .
+
+# Format binary files to unix
+RUN find bin -type f -exec dos2unix {} +
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
