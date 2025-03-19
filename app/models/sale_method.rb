@@ -1,9 +1,7 @@
 class SaleMethod < ApplicationRecord
   include Status::Enum
 
-  validates :description, presence: true, length: { maximum: 60 }
+  acts_as_list
 
-  def self.ransackable_attributes(auth_object = nil)
-    [ "id", "description", "order", "status" ]
-  end
+  validates :description, presence: true, length: { maximum: 60 }
 end

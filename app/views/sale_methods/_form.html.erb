@@ -4,17 +4,15 @@
       <%= form.input :id, disabled: true %>
     </div>
 
-    <div class="col-6">
+    <div class="col-8">
       <%= form.input :description, autofocus: true %>
-    </div>
-
-    <div class="col-2">
-      <%= form.input :order %>
     </div>
 
     <div class="col-2">
       <%= form.input :status, collection: enum_to_select(SaleMethod.statuses), include_blank: false %>
     </div>
+
+    <%= form.input :position, as: :hidden %>
   </div>
 
   <%= render("components/actions", form: form) %>

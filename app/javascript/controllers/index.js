@@ -10,5 +10,8 @@ application.register("hello", HelloController)
 import { Autocomplete } from 'stimulus-autocomplete'
 application.register('autocomplete', Autocomplete)
 
+import Sortable from '@stimulus-components/sortable'
+application.register('sortable', Sortable)
+
 import PersonDetailsController from "./person_details_controller"
 application.register("person-details", PersonDetailsController)

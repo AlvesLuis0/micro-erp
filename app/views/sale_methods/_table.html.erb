@@ -1,20 +1,21 @@
 <table class="table table-hover table-striped">
   <thead>
     <tr>
-      <th><%= sort_link(q, :id) %></th>
-      <th><%= sort_link(q, :description) %></th>
-      <th><%= sort_link(q, :order) %></th>
-      <th><%= sort_link(q, :status) %></th>
+      <th><%= t("attributes.id") %></th>
+      <th><%= t("attributes.description") %></th>
+      <th><%= t("attributes.status") %></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody data-controller="sortable" data-sortable-animation-value="150">
     <% resources.each do |resource| %>
-      <tr>
+      <tr data-sortable-update-url="<%= update_position_sale_methods_path(resource) %>">
         <th><%= resource.id %></th>
         <td><%= highlight(resource.description, params.dig(:q, :description_cont)) %></td>
-        <td><%= resource.order %></td>
         <td><%= t_enum(resource.status) %></td>
-        <td><%= t_link_to "helpers.submit.edit", edit_sale_method_path(resource), class: "btn btn-primary" %></td>
+        <td class="d-flex align-items-center gap-3">
+          <%= t_link_to "helpers.submit.edit", edit_sale_method_path(resource), class: "btn btn-primary" %>
+          <i class="bi bi-arrows-move"></i>
+        </td>
       </tr>
     <% end %>
   </tbody>

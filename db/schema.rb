@@ -103,7 +103,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_14_220600) do
 
   create_table "sale_methods", force: :cascade do |t|
     t.string "description", limit: 60, null: false
-    t.integer "order"
+    t.integer "position", null: false
     t.enum "status", default: "active", null: false, enum_type: "statuses"
     t.index ["status"], name: "index_sale_methods_on_status"
   end

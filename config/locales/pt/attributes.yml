@@ -2,7 +2,6 @@ pt:
   attributes:
     id: ID
     description: Descrição
-    order: Ordem
 
     payment_type: Tipo de pagamento
 

@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get "modules/sales"
   get "modules/accounting"
 
-  resources :sale_methods
+  resources :sale_methods do
+    collection do
+      patch ":id/update_position", action: :update_position, as: :update_position
+    end
+  end
   resources :payment_methods
   resources :operation_codes
   resources :cities

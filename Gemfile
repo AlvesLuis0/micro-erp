@@ -48,6 +48,8 @@ gem "ransack", "~> 4.3"
 
 gem "pagy", "~> 9.3"
 
+gem "acts_as_list", "~> 1.2"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
