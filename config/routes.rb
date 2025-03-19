@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get "modules/administrator"
   get "modules/sales"
+  get "modules/accounting"
 
   resources :sale_methods
   resources :payment_methods

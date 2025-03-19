@@ -2,6 +2,7 @@ pt:
   modules:
     administrator: Administrador
     sales: Vendas
+    accounting: Contabilidade
 
     parameters_purchases_sales: Parâmetros - Compras e vendas
     parameters_financial: Parameters - Financeiro

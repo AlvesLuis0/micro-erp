@@ -7,4 +7,7 @@ class ModulesController < ApplicationController
 
   def sales
   end
+
+  def accounting
+  end
 end
