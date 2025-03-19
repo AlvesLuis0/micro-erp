@@ -21,10 +21,6 @@
     <div class="col-2">
       <%= form.input :entry_exit, collection: enum_to_select(OperationCode.entry_exits), include_blank: false %>
     </div>
-
-    <div class="col-2">
-      <%= form.input :updates_stock, as: :select, include_blank: false %>
-    </div>
   </div>
 
   <div class="row gap-2 mb-2">

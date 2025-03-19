@@ -20,6 +20,7 @@ pt:
 
     entry: Entrada
     exit: Saída
+    symbolic: Simbólico
 
     individual: Física
     company: Jurídica

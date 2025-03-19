@@ -6,7 +6,8 @@ module EntryExit
       enum :entry_exit,
         {
           entry: "entry",
-          exit: "exit"
+          exit: "exit",
+          symbolic: "symbolic"
         },
         prefix: true,
         validate: true

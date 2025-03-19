@@ -17,7 +17,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_14_220600) do
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
   create_enum "contact_types", ["email", "mobile"]
-  create_enum "entry_exit", ["entry", "exit"]
+  create_enum "entry_exit", ["entry", "exit", "symbolic"]
   create_enum "marital_statuses", ["single", "married", "divorced", "widowed"]
   create_enum "operation_types", ["purchase", "sale", "consignment", "exchange", "transfer", "other"]
   create_enum "payment_types", ["cash", "credit_card", "debit_card", "bank_transfer", "installment", "eletronic_wallet", "other"]
@@ -65,7 +65,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_14_220600) do
     t.string "description", limit: 60, null: false
     t.enum "operation_type", null: false, enum_type: "operation_types"
     t.enum "entry_exit", null: false, enum_type: "entry_exit"
-    t.boolean "updates_stock", null: false
     t.boolean "input_quantity_on_create", null: false
     t.boolean "input_quantity_on_update", null: false
     t.boolean "input_price_on_create", null: false

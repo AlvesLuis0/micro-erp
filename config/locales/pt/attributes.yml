@@ -8,7 +8,6 @@ pt:
 
     operation_type: Tipo de operação
     entry_exit: Entrada/Saída
-    updates_stock: Atualiza estoque
 
     created_at: Cadastrado em
     note: Observação

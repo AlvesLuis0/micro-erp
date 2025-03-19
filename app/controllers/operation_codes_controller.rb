@@ -5,7 +5,7 @@ class OperationCodesController < ApplicationController
 
   def resource_params
     params.expect(operation_code: [
-      :description, :operation_type, :entry_exit, :updates_stock,
+      :description, :operation_type, :entry_exit,
       :input_quantity_on_create, :input_quantity_on_update,
       :input_price_on_create, :input_price_on_update, :status
     ])
