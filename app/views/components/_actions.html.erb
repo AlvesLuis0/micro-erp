@@ -1,15 +1,14 @@
 <div class="d-flex gap-2">
-  <div>
-    <%= form.button :submit %>
-  </div>
+  <%= t_link_to "helpers.submit.new", new_resource_path, class: "btn btn-primary" unless form.object.new_record? %>
 
-  <%= t_link_to "helpers.submit.cancel", request.path, class: "btn btn-warning" %>
+  <%= form.button :submit %>
 
-  <% unless form.object.new_record? %>
-    <%= t_link_to "helpers.submit.delete", resource_path(form.object), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: t("flash.confirm") } %>
+  <!--
+    if you use request.path, it will not work when you try
+    to save and cancel, because the request would be for the
+    "create" route and not the current one
+  -->
+  <%= t_link_to "helpers.submit.cancel", "javascript:Turbo.visit(location.pathname)", class: "btn btn-warning" %>
 
-    <%= t_link_to "helpers.submit.new", new_resource_path, class: "btn btn-primary" %>
-  <% end %>
-
-  <%= t_link_to "helpers.submit.back", resources_path, class: "btn btn-secondary" %>
+  <%= t_link_to "helpers.submit.delete", resource_path(form.object), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: t("flash.confirm") } unless form.object.new_record? %>
 </div>

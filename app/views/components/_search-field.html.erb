@@ -1,0 +1,8 @@
+<%= form.input field do %>
+  <div class="input-group">
+    <%= form.input_field field, class: "form-control", disabled: true %>
+    <%= link_to(resources_path, class: "btn btn-secondary") do %>
+      <i class="bi bi-search"></i>
+    <% end %>
+  </div>
+<% end %>

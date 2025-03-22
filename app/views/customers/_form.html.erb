@@ -1,7 +1,7 @@
 <%= simple_form_for(resource, data: { controller: "person-details" }) do |form| %>
   <div class="row">
     <div class="col-2">
-      <%= form.input :id, disabled: true %>
+      <%= render("components/search-field", form: form, field: :id) %>
     </div>
 
     <%= form.simple_fields_for(:person_detail) do |form| %>

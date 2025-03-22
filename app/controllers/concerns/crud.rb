@@ -42,7 +42,7 @@ module Crud
 
       def destroy
         @resource.status_deleted!
-        redirect_to resources_path, status: :see_other, notice: t("flash.deleted")
+        redirect_to new_resource_path, status: :see_other, notice: t("flash.deleted")
       end
 
       protected

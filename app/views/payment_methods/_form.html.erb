@@ -1,7 +1,7 @@
 <%= simple_form_for(resource) do |form| %>
   <div class="row">
     <div class="col-2">
-      <%= form.input :id, disabled: true %>
+      <%= render("components/search-field", form: form, field: :id) %>
     </div>
 
     <div class="col-8">
