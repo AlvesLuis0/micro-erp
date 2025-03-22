@@ -6,16 +6,13 @@
       <th><%= t("attributes.status") %></th>
     </tr>
   </thead>
-  <tbody data-controller="sortable" data-sortable-animation-value="150">
+  <tbody data-controller="sortable" data-sortable-animation-value="150" class="cursor-move">
     <% resources.each do |resource| %>
       <tr data-sortable-update-url="<%= update_position_sale_methods_path(resource) %>">
         <th><%= resource.id %></th>
         <td><%= highlight(resource.description, params.dig(:q, :description_cont)) %></td>
         <td><%= t_enum(resource.status) %></td>
-        <td class="d-flex align-items-center gap-3">
-          <%= t_link_to "helpers.submit.edit", edit_sale_method_path(resource), class: "btn btn-primary" %>
-          <i class="bi bi-arrows-move"></i>
-        </td>
+        <td class="d-flex align-items-center gap-3"><%= t_link_to "helpers.submit.edit", edit_sale_method_path(resource), class: "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>
