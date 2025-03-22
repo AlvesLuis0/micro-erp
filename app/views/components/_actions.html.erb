@@ -1,15 +1,15 @@
 <div class="d-flex gap-2">
   <div>
-    <%= form.button :submit, data: { turbo_method: :delete, turbo_confirm: t("flash.confirm") } %>
+    <%= form.button :submit %>
   </div>
 
-  <%= t_link_to "helpers.submit.cancel", request.path, class: "btn btn-warning", data: { turbo_method: :get, turbo_confirm: t("flash.confirm") } %>
+  <%= t_link_to "helpers.submit.cancel", request.path, class: "btn btn-warning" %>
 
   <% unless form.object.new_record? %>
     <%= t_link_to "helpers.submit.delete", resource_path(form.object), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: t("flash.confirm") } %>
 
-    <%= t_link_to "helpers.submit.new", new_resource_path, class: "btn btn-primary", data: { turbo_method: :get, turbo_confirm: t("flash.confirm") } %>
+    <%= t_link_to "helpers.submit.new", new_resource_path, class: "btn btn-primary" %>
   <% end %>
 
-  <%= t_link_to "helpers.submit.back", resources_path, class: "btn btn-secondary", data: { turbo_method: :get, turbo_confirm: t("flash.confirm") } %>
+  <%= t_link_to "helpers.submit.back", resources_path, class: "btn btn-secondary" %>
 </div>
